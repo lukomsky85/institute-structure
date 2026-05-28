@@ -1,0 +1,817 @@
+/* ── Общие переменные ─────────────────────────────────────────────────────── */
+:root {
+    --is-blue:   #2563eb;
+    --is-green:  #059669;
+    --is-purple: #7c3aed;
+    --is-red:    #dc2626;
+    --is-orange: #d97706;
+    --is-teal:   #0891b2;
+    --is-border: #e5e7eb;
+    --is-bg:     #f9fafb;
+    --is-text:   #111827;
+    --is-muted:  #6b7280;
+    --is-radius: 8px;
+}
+
+/* ── Метабоксы ────────────────────────────────────────────────────────────── */
+.institute-meta-box .inside {
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Вкладки метабоксов (.imb-*) — общие стили для всех CPT ─────────────── */
+.institute-meta-box .imb-tabs {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.institute-meta-box .imb-tab-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 2px solid #e5e7eb;
+    margin: 0;
+    padding: 0 12px;
+    background: #f9fafb;
+}
+
+.institute-meta-box .imb-tab-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 10px 14px !important;
+    margin: 0 0 -2px 0 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #6b7280 !important;
+    cursor: pointer;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    transition: color .15s, background .15s;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    float: none !important;
+    text-align: left !important;
+    vertical-align: bottom !important;
+}
+
+.institute-meta-box .imb-tab-btn:hover {
+    background: #f3f4f6 !important;
+    color: #111827 !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.institute-meta-box .imb-tab-btn.active {
+    color: #111827 !important;
+    border-bottom-color: #2563eb !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* Панели вкладок */
+.institute-meta-box .imb-tab-panel {
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.institute-meta-box .imb-tab-panel.active {
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 20px !important;
+    margin: 0 !important;
+}
+
+/* Сетка: поля + фото */
+.institute-meta-box .imb-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 24px;
+    align-items: start;
+}
+
+.institute-meta-box .imb-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.institute-meta-box .imb-field {
+    margin-bottom: 14px;
+}
+
+.institute-meta-box .imb-field:last-child {
+    margin-bottom: 0;
+}
+
+.institute-meta-box .imb-field label,
+.institute-meta-box .imb-photo-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.institute-meta-box .imb-field input[type="text"],
+.institute-meta-box .imb-field input[type="email"],
+.institute-meta-box .imb-field input[type="url"],
+.institute-meta-box .imb-field input[type="number"],
+.institute-meta-box .imb-field select {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #111827;
+    transition: border-color .15s, box-shadow .15s;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.institute-meta-box .imb-field input:focus,
+.institute-meta-box .imb-field select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    outline: none;
+}
+
+/* Фото */
+.institute-meta-box .imb-photo-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.institute-meta-box .imb-photo-preview {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border: 2px dashed #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+}
+
+.institute-meta-box .imb-photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.institute-meta-box .imb-photo-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #9ca3af;
+}
+
+.institute-meta-box .imb-photo-empty .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.institute-meta-box .imb-photo-empty span:last-child {
+    font-size: 11px;
+}
+
+.institute-meta-box .imb-photo-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.institute-meta-box .imb-btn-danger {
+    color: #dc2626;
+    border-color: #fca5a5;
+    background: #fff;
+}
+
+.institute-meta-box .imb-btn-danger:hover {
+    background: #fef2f2;
+    border-color: #dc2626;
+}
+
+.institute-meta-box .imb-btn-add {
+    margin-top: 10px;
+    color: #2563eb;
+    border-color: #bfdbfe;
+    background: #fff;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.institute-meta-box .imb-btn-add:hover {
+    background: #eff6ff;
+    border-color: #2563eb;
+}
+
+/* НМР / НРС / УВР */
+.institute-meta-box .imb-work-section {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #e5e7eb;
+    clear: both;
+    overflow: hidden;
+}
+
+.institute-meta-box .imb-work-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.institute-meta-box .imb-work-section h4 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    clear: both;
+}
+
+.institute-meta-box .imb-work-section h4 .dashicons {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+    color: #6b7280;
+}
+
+/* Публикации */
+.institute-meta-box .pub-item {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 8px;
+}
+
+.institute-meta-box .pub-item-row {
+    margin-bottom: 8px;
+}
+
+.institute-meta-box .pub-item-row:last-child {
+    margin-bottom: 0;
+}
+
+.institute-meta-box .pub-item-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.institute-meta-box .pub-item input[type="text"],
+.institute-meta-box .pub-item input[type="url"] {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.institute-meta-box .pub-item input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    outline: none;
+}
+
+.institute-meta-box .remove-pub {
+    color: #dc2626;
+    border-color: #fca5a5;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.institute-meta-box .remove-pub:hover {
+    background: #fef2f2;
+    border-color: #dc2626;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .institute-meta-box .imb-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .institute-meta-box .imb-photo-col {
+        position: static;
+    }
+
+    .institute-meta-box .imb-photo-preview {
+        aspect-ratio: auto;
+        height: 200px;
+    }
+}
+
+.institute-meta-box table.form-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.institute-meta-box table.form-table tr {
+    border-bottom: 1px solid var(--is-border);
+}
+
+.institute-meta-box table.form-table tr:last-child {
+    border-bottom: none;
+}
+
+.institute-meta-box table.form-table th {
+    width: 180px;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--is-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--is-bg);
+    vertical-align: top;
+    border-right: 1px solid var(--is-border);
+}
+
+.institute-meta-box table.form-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+}
+
+/* Инпуты в метабоксах */
+.institute-meta-box input[type="text"],
+.institute-meta-box input[type="email"],
+.institute-meta-box input[type="url"],
+.institute-meta-box input[type="number"],
+.institute-meta-box textarea,
+.institute-meta-box select {
+    border: 1.5px solid var(--is-border) !important;
+    border-radius: 6px !important;
+    padding: 7px 10px !important;
+    font-size: 13px !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    background: #fff !important;
+}
+
+.institute-meta-box input:focus,
+.institute-meta-box textarea:focus,
+.institute-meta-box select:focus {
+    border-color: var(--is-blue) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1) !important;
+    outline: none !important;
+}
+
+.institute-meta-box p.description {
+    font-size: 11px;
+    color: var(--is-muted);
+    margin: 5px 0 0 0;
+    line-height: 1.4;
+}
+
+/* ── Превью фото ──────────────────────────────────────────────────────────── */
+#fakultet-zav-photo-preview,
+#kafedra-zav-photo-preview,
+#srednee-zav-photo-preview,
+#prepodavatel-photo-preview {
+    min-height: 40px;
+    margin: 8px 0;
+}
+
+#fakultet-zav-photo-preview img,
+#kafedra-zav-photo-preview img,
+#srednee-zav-photo-preview img,
+#prepodavatel-photo-preview img {
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--is-border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: block;
+}
+
+/* Кнопки загрузки/удаления фото */
+.institute-meta-box .button {
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    height: auto !important;
+    padding: 6px 12px !important;
+    line-height: 1.4 !important;
+}
+
+/* ── Блоки публикаций ─────────────────────────────────────────────────────── */
+.pub-item {
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1.5px solid var(--is-border);
+    position: relative;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pub-item:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pub-item input[type="text"],
+.pub-item input[type="url"] {
+    border: 1.5px solid var(--is-border) !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    transition: border-color 0.15s ease !important;
+}
+
+.pub-item input:focus {
+    border-color: var(--is-blue) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1) !important;
+    outline: none !important;
+}
+
+.button.remove-pub {
+    background: #fff !important;
+    color: var(--is-red) !important;
+    border: 1.5px solid #fca5a5 !important;
+    border-radius: 6px !important;
+    padding: 4px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: all 0.15s ease !important;
+}
+
+.button.remove-pub:hover {
+    background: #fef2f2 !important;
+    border-color: var(--is-red) !important;
+    box-shadow: none !important;
+}
+
+#add-pub-btn,
+#add-pub-btn-kafedra,
+#add-pub-btn-srednee,
+#add-pub-btn-fakultet {
+    background: #fff !important;
+    color: var(--is-blue) !important;
+    border: 1.5px solid #bfdbfe !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    margin-top: 6px !important;
+    transition: all 0.15s ease !important;
+}
+
+#add-pub-btn:hover,
+#add-pub-btn-kafedra:hover,
+#add-pub-btn-srednee:hover,
+#add-pub-btn-fakultet:hover {
+    background: #eff6ff !important;
+    border-color: var(--is-blue) !important;
+}
+
+/* ── Страница синхронизации ───────────────────────────────────────────────── */
+.institute-sync-results {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px solid var(--is-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.institute-sync-results table {
+    margin: 0;
+    width: 100%;
+}
+
+.institute-sync-results th {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--is-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 16px 8px 0;
+    width: 280px;
+    border-bottom: 1px solid var(--is-border);
+}
+
+.institute-sync-results td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--is-border);
+    font-size: 13px;
+    color: var(--is-text);
+}
+
+.institute-sync-results tr:last-child th,
+.institute-sync-results tr:last-child td {
+    border-bottom: none;
+}
+
+/* ── Уведомления ──────────────────────────────────────────────────────────── */
+.notice.institute-notice {
+    border-left: 4px solid var(--is-blue);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+}
+
+.notice.institute-notice p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+/* ── Прогресс и загрузка ──────────────────────────────────────────────────── */
+.institute-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2.5px solid rgba(37,99,235,0.15);
+    border-radius: 50%;
+    border-top-color: var(--is-blue);
+    animation: is-spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes is-spin {
+    to { transform: rotate(360deg); }
+}
+
+.institute-progress-bar {
+    width: 100%;
+    background: var(--is-border);
+    border-radius: 99px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 8px;
+}
+
+.institute-progress-bar-fill {
+    height: 8px;
+    background: linear-gradient(90deg, var(--is-blue), #60a5fa);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 99px;
+}
+
+/* ── Страница плагина — переопределение инлайн-стилей ─────────────────────── */
+.institute-plugin-info {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.institute-plugin-info h1 {
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: var(--is-text) !important;
+    letter-spacing: -0.4px;
+}
+
+.institute-plugin-info h2,
+.institute-plugin-info h3 {
+    font-weight: 700;
+    color: var(--is-text);
+    letter-spacing: -0.2px;
+}
+
+.institute-plugin-info code {
+    background: var(--is-bg);
+    border: 1px solid var(--is-border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 12px;
+    color: var(--is-blue);
+}
+
+/* Карточки быстрых ссылок */
+.institute-plugin-info a[style*="border-left"] {
+    border-radius: 8px !important;
+    border-left-width: 3px !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.institute-plugin-info a[style*="border-left"]:hover {
+    background: #fff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    text-decoration: none;
+}
+
+/* Карточки статистики */
+.institute-plugin-info div[style*="text-align: center"] {
+    border-radius: 10px !important;
+    transition: box-shadow 0.15s ease !important;
+}
+
+.institute-plugin-info div[style*="text-align: center"]:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+/* ── Адаптив ──────────────────────────────────────────────────────────────── */
+@media (max-width: 782px) {
+    .institute-meta-box table.form-table th {
+        width: auto;
+        display: block;
+        padding: 12px 16px 4px;
+        border-right: none;
+        border-bottom: none;
+        background: var(--is-bg);
+    }
+
+    .institute-meta-box table.form-table td {
+        display: block;
+        padding: 4px 16px 12px;
+    }
+
+    .pub-item div[style*="display:flex"],
+    .pub-item div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .pub-item input[type="text"],
+    .pub-item input[type="url"] {
+        width: 100% !important;
+    }
+}
+
+/* ── Сетка преподавателей в метабоксе ─────────────────────────────────────── */
+.institute-meta-box .imb-prepods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+.institute-meta-box .imb-prepod-wrap {
+    position: relative;
+    display: flex;
+}
+
+.institute-meta-box .imb-prepod-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+    min-width: 0;
+}
+
+.institute-meta-box .imb-prepod-item:hover {
+    border-color: #bfdbfe;
+    background: #eff6ff;
+    box-shadow: 0 2px 8px rgba(37,99,235,.08);
+    text-decoration: none;
+    color: inherit;
+}
+
+.institute-meta-box .imb-prepod-photo {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+}
+
+.institute-meta-box .imb-prepod-photo img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.institute-meta-box .imb-prepod-photo .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #9ca3af;
+}
+
+.institute-meta-box .imb-prepod-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.institute-meta-box .imb-prepod-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.institute-meta-box .imb-prepod-role {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.institute-meta-box .imb-prepod-degree {
+    font-size: 10px;
+    color: #9ca3af;
+    font-style: italic;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.institute-meta-box .imb-prepod-ext {
+    flex-shrink: 0;
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+    color: #9ca3af;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.institute-meta-box .imb-prepod-item:hover .imb-prepod-ext {
+    opacity: 1;
+    color: #2563eb;
+}
+
+.institute-meta-box .imb-prepod-detach {
+    flex-shrink: 0;
+    width: 32px;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d1d5db;
+    transition: background .15s, color .15s, border-color .15s;
+    padding: 0;
+}
+
+.institute-meta-box .imb-prepod-detach:hover {
+    background: #fef2f2;
+    color: #dc2626;
+    border-color: #fca5a5;
+}
+
+.institute-meta-box .imb-prepod-detach .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.institute-meta-box .imb-prepod-detach.loading {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.institute-meta-box .imb-prepod-wrap.detaching {
+    opacity: .4;
+    pointer-events: none;
+    transition: opacity .3s;
+}
